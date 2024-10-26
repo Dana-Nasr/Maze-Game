@@ -2,7 +2,7 @@ let maze,
   player,
   cursors,
   score = 0;
-timeLeft = 5;
+timeLeft = 45;
 levelCompleted = false;
 
 var config = {
@@ -64,7 +64,7 @@ var config = {
             coin.setCollideWorldBounds(true);
             coin.setDisplaySize(collectorsW, collectorsY);
           } else if (maze[row][col] === 3) {
-            // Create coins
+            // Create trophy
             const prize = trophy
               .create(col * tileW, row * tileH, "prize")
               .setOrigin(0, 0)
