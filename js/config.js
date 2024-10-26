@@ -1,12 +1,17 @@
-let maze, player, cursors;
+let maze,
+  player,
+  cursors,
+  score = 0;
+timeLeft = 1;
 
 var config = {
   type: Phaser.AUTO,
   width: 800,
-  height: 600,
+  height: 650,
   scene: {
     preload: function () {
       this.load.image("sky", "assets/sky.png");
+      this.load.image("coin", "assets/star.png");
       this.load.spritesheet("dude", "assets/dude.png", {
         frameWidth: 32,
         frameHeight: 48,
@@ -16,29 +21,29 @@ var config = {
     create: function () {
       this.add.image(400, 300, "sky");
       platforms = this.physics.add.staticGroup();
+      coins = this.physics.add.staticGroup();
       maze = [
         [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 2, 0, 0, 2, 1, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1],
         [0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0],
-        [0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1],
-        [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1],
+        [0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 1, 1, 0, 1, 1],
+        [0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 0, 0, 1],
         [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
         [0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1],
-        [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2, 1],
         [0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1],
         [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1],
         [0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1],
-        [0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
-        [0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 2, 0, 1],
+        [0, 1, 0, 0, 2, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       ];
-
-      const graphics = this.add.graphics(); //graphic obj
 
       const tileW = 40; //tile dimensions
       const tileH = 40;
-
+      const starW = 30;
+      const starH = 30;
       for (let row = 0; row < maze.length; row++) {
         for (let col = 0; col < maze[row].length; col++) {
           if (maze[row][col] === 1) {
@@ -47,6 +52,14 @@ var config = {
               .setOrigin(0, 0)
               .refreshBody();
             wall.setDisplaySize(tileW, tileH);
+          } else if (maze[row][col] === 2) {
+            // Create coins
+            const coin = coins
+              .create(col * tileW, row * tileH, "coin")
+              .setOrigin(0, 0)
+              .refreshBody();
+            coin.setCollideWorldBounds(true);
+            coin.setDisplaySize(starW, starH);
           }
         }
       }
@@ -78,7 +91,38 @@ var config = {
 
       cursors = this.input.keyboard.createCursorKeys();
 
+      this.physics.add.collider(coins, platforms);
       this.physics.add.collider(player, platforms);
+      scoreText = this.add.text(40, 610, "score: 0", {
+        fontSize: "32px",
+        fill: "#ffffff",
+      });
+
+      timerText = this.add.text(600, 610, "Time: " + timeLeft, {
+        fontSize: "32px",
+        fill: "#ffffff",
+      });
+
+      // Timer event to decrement time each second
+      this.time.addEvent({
+        delay: 1000,
+        callback: () => {
+          if (timeLeft > 0) {
+            timeLeft--;
+            timerText.setText("Time: " + timeLeft);
+          } else {
+            this.scene.pause();
+            this.add.text(250, 320, "Game Over!!", {
+              fontSize: "48px",
+              fill: "#ff0000",
+              
+            });
+          }
+        },
+        callbackScope: this,
+        loop: true,
+      });
+      this.physics.add.overlap(player, coins, collectStar, null, this);
     },
 
     update: function () {
@@ -109,5 +153,9 @@ var config = {
     },
   },
 };
-
+function collectStar(player, star) {
+  star.disableBody(true, true);
+  score += 10;
+  scoreText.setText("Score: " + score);
+}
 var game = new Phaser.Game(config);
