@@ -2,7 +2,8 @@ let maze,
   player,
   cursors,
   score = 0;
-timeLeft = 60;
+timeLeft = 5;
+levelCompleted=false;
 
 var config = {
   type: Phaser.AUTO,
@@ -38,7 +39,7 @@ var config = {
         [1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 2],
         [1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 2, 0, 1, 1],
         [1, 1, 1, 1, 2, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
       ];
 
@@ -62,9 +63,7 @@ var config = {
               .refreshBody();
             coin.setCollideWorldBounds(true);
             coin.setDisplaySize(collectorsW, collectorsY);
-          }
-
-          else if (maze[row][col] === 3) {
+          } else if (maze[row][col] === 3) {
             // Create coins
             const prize = trophy
               .create(col * tileW, row * tileH, "prize")
@@ -96,7 +95,7 @@ var config = {
         repeat: -1,
       });
 
-      player = this.physics.add.sprite(100, 500, "dude");
+      player = this.physics.add.sprite(30, 545, "dude");
       player.setScale(0.7);
       player.setBounce(0);
       player.setCollideWorldBounds(true);
@@ -118,10 +117,10 @@ var config = {
       this.time.addEvent({
         delay: 1000,
         callback: () => {
-          if (timeLeft > 0) {
+          if (timeLeft > 0 && levelCompleted!==true ) {
             timeLeft--;
             timerText.setText("Time: " + timeLeft);
-          } else {
+          } else if (levelCompleted!==true) {
             this.scene.pause();
             const gameOverBg = this.add.graphics();
             gameOverBg.fillStyle(0x000000, 0.9);
@@ -137,9 +136,14 @@ var config = {
         callbackScope: this,
         loop: true,
       });
-      this.physics.add.overlap(player, coins, collectStar, null, this);
-      this.physics.add.overlap(player, trophy, collectStar, null, this);
-   
+      this.physics.add.overlap(player, coins, collectCoin, null, this);
+      this.physics.add.overlap(
+        player,
+        trophy,
+        DisplayLevelCompleted,
+        null,
+        this
+      );
     },
 
     update: function () {
@@ -170,9 +174,25 @@ var config = {
     },
   },
 };
-function collectStar(player, star) {
-  star.disableBody(true, true);
+function collectCoin(player, coin) {
+  coin.disableBody(true, true);
   score += 10;
   scoreText.setText("Score: " + score);
+}
+function DisplayLevelCompleted(player, prize) {
+
+  prize.disableBody(true, true);
+  levelCompleted = true; 
+  player.setVelocity(0);
+ 
+  const levelCompleteBg = player.scene.add.graphics();
+  levelCompleteBg.fillStyle(0x000000, 0.9);
+  levelCompleteBg.fillRect(200, 200, 400, 150);
+
+  player.scene.add.text(210, 250, "Level Completed ;)", {
+    fontSize: "36px",
+    fill: "#00ff00",
+    fontStyle: "bold",
+  });
 }
 var game = new Phaser.Game(config);
