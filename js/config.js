@@ -12,6 +12,7 @@ var config = {
     preload: function () {
       this.load.image("sky", "assets/sky.png");
       this.load.image("coin", "assets/star.png");
+      this.load.image("prize", "assets/prize.png");
       this.load.spritesheet("dude", "assets/dude.png", {
         frameWidth: 32,
         frameHeight: 48,
@@ -22,10 +23,11 @@ var config = {
       this.add.image(400, 300, "sky");
       platforms = this.physics.add.staticGroup();
       coins = this.physics.add.staticGroup();
+      trophy = this.physics.add.staticGroup();
       maze = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 2, 0, 0, 2, 1, 0, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0],
+        [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 3],
         [1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 2, 0, 0, 1, 1, 1, 0, 1, 1, 1],
         [1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1],
         [1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1],
@@ -42,8 +44,8 @@ var config = {
 
       const tileW = 40; //tile dimensions
       const tileH = 40;
-      const starW = 30;
-      const starH = 30;
+      const collectorsW = 30;
+      const collectorsY = 30;
       for (let row = 0; row < maze.length; row++) {
         for (let col = 0; col < maze[row].length; col++) {
           if (maze[row][col] === 1) {
@@ -59,7 +61,17 @@ var config = {
               .setOrigin(0, 0)
               .refreshBody();
             coin.setCollideWorldBounds(true);
-            coin.setDisplaySize(starW, starH);
+            coin.setDisplaySize(collectorsW, collectorsY);
+          }
+
+          else if (maze[row][col] === 3) {
+            // Create coins
+            const prize = trophy
+              .create(col * tileW, row * tileH, "prize")
+              .setOrigin(0, 0)
+              .refreshBody();
+            prize.setCollideWorldBounds(true);
+            prize.setDisplaySize(collectorsW, collectorsY);
           }
         }
       }
@@ -93,7 +105,7 @@ var config = {
 
       this.physics.add.collider(coins, platforms);
       this.physics.add.collider(player, platforms);
-      scoreText = this.add.text(40, 610, "score: 0", {
+      scoreText = this.add.text(60, 610, "score: 0", {
         fontSize: "32px",
         fill: "#ffffff",
       });
@@ -103,7 +115,6 @@ var config = {
         fill: "#ffffff",
       });
 
-      // Timer event to decrement time each second
       this.time.addEvent({
         delay: 1000,
         callback: () => {
@@ -116,10 +127,9 @@ var config = {
             gameOverBg.fillStyle(0x000000, 0.9);
             gameOverBg.fillRect(200, 200, 400, 150);
 
-            // Add "Game Over" text
             this.add.text(200, 250, " Game Over :(", {
               fontSize: "48px",
-              fill: "#ff0000", // Red color for text
+              fill: "#ff0000",
               fontStyle: "bold",
             });
           }
@@ -128,6 +138,8 @@ var config = {
         loop: true,
       });
       this.physics.add.overlap(player, coins, collectStar, null, this);
+      this.physics.add.overlap(player, trophy, collectStar, null, this);
+   
     },
 
     update: function () {
