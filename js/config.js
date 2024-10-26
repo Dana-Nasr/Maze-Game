@@ -72,6 +72,7 @@ var config = {
       });
 
       player = this.physics.add.sprite(100, 500, "dude");
+      player.setScale(0.7);
       player.setBounce(0);
       player.setCollideWorldBounds(true);
 
