@@ -3,7 +3,7 @@ let maze,
   cursors,
   score = 0;
 timeLeft = 5;
-levelCompleted=false;
+levelCompleted = false;
 
 var config = {
   type: Phaser.AUTO,
@@ -117,10 +117,10 @@ var config = {
       this.time.addEvent({
         delay: 1000,
         callback: () => {
-          if (timeLeft > 0 && levelCompleted!==true ) {
+          if (timeLeft > 0 && levelCompleted !== true) {
             timeLeft--;
             timerText.setText("Time: " + timeLeft);
-          } else if (levelCompleted!==true) {
+          } else if (levelCompleted !== true) {
             this.scene.pause();
             const gameOverBg = this.add.graphics();
             gameOverBg.fillStyle(0x000000, 0.9);
@@ -180,11 +180,10 @@ function collectCoin(player, coin) {
   scoreText.setText("Score: " + score);
 }
 function DisplayLevelCompleted(player, prize) {
-
   prize.disableBody(true, true);
-  levelCompleted = true; 
+  levelCompleted = true;
   player.setVelocity(0);
- 
+
   const levelCompleteBg = player.scene.add.graphics();
   levelCompleteBg.fillStyle(0x000000, 0.9);
   levelCompleteBg.fillRect(200, 200, 400, 150);
