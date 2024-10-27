@@ -1,0 +1,42 @@
+header{
+    height: 300vh;
+    background-color: lightblue;
+    position: relative;
+}
+
+nav{
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+    background-color: #F33030;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+
+}
+
+.logo{
+    font-size: 30px;
+}
+.logo > a{
+    color: white;
+    font-weight: bold;
+}
+
+/* .nav-links{
+    align-items: center;
+    justify-content: center;
+} */
+
+.nav-links > li{
+    margin-left: 50px;
+    transition: 1s;
+}
+.nav-links > li:hover{
+    transform: scale(1.1);
+}
+
+.nav-links li a{
+    color: white;
+    font-weight: bold;
+}
