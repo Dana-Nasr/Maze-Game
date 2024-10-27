@@ -4,7 +4,9 @@ var config = {
   height: 650,
   scene: {
     preload: preload,
-    create: create,
+    create: function () {
+      create.call(this, index);
+    },
     update: update,
   },
   physics: {
@@ -13,8 +15,6 @@ var config = {
       gravity: { y: 300 },
       debug: false,
     },
+    parent: 'content',
   },
 };
-
-
-var game = new Phaser.Game(config);
