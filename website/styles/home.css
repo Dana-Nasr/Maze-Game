@@ -40,3 +40,32 @@ nav{
     color: white;
     font-weight: bold;
 }
+
+
+/* Container div */
+.container, .guide{
+    height: 100vh;
+}
+
+.container > h1, .guide > h1, .charachters > h1{
+    font-size: 80px;
+    line-height: 55px;
+}
+
+.container > p, .guide > p, .charachters > p{
+    width: 50vw;
+    font-size: 30px;
+    color: #5F5F5F;
+    text-align: center;
+    margin: 50px;
+    z-index: 1;
+}
+
+.container > button, .charachters > button{
+    background-color: #F33030;
+    width: 251px;
+    height: 52px;
+    border-radius: 100px;
+    font-size: 24px;
+    color: white;
+}
