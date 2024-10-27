@@ -47,12 +47,12 @@ nav{
     height: 100vh;
 }
 
-.container > h1, .guide > h1, .charachters > h1{
+.container > h1, .guide > h1, .charachters > h1, .gameplay > h1{
     font-size: 80px;
     line-height: 55px;
 }
 
-.container > p, .guide > p, .charachters > p{
+.container > p, .guide > p, .charachters > p, .gameplay > p{
     width: 50vw;
     font-size: 30px;
     color: #5F5F5F;
@@ -97,6 +97,10 @@ nav{
 
 /* Guide section */
 
+.guide{
+    background-color: #F5F5F5;
+}
+
 .cards{
     width: 100%;
     text-align: center;
@@ -132,7 +136,7 @@ nav{
 
 /* Characters Section */
 .charachters{
-    background-color: #E9F9FF;
+    background-color: #F5F5F5;
     height: 90vh;
 }
 
@@ -153,3 +157,21 @@ nav{
 .players > img:hover{
     transform: scale(1.5);
 }
+
+
+/* Gameplay section */
+
+.gameplay{
+    height: 90vh;
+}
+
+.parallax {
+    /* Parallax effect */
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../assets/images/parallax.svg);
+}
+
