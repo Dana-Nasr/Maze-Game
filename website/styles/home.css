@@ -127,3 +127,29 @@ nav{
 .card > h1{
     margin: 10px;
 }
+
+
+
+/* Characters Section */
+.charachters{
+    background-color: #E9F9FF;
+    height: 90vh;
+}
+
+.players{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.players > img{
+    width: 80px;
+    margin-left: 50px;
+    margin-right: 50px;
+    transition: 1s;
+}
+.players > img:hover{
+    transform: scale(1.5);
+}
