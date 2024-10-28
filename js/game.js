@@ -5,7 +5,7 @@ var config = {
   scene: {
     preload: preload,
     create: function () {
-      create.call(this, index);
+      create.call(this, index,color);
     },
     update: update,
   },

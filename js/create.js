@@ -3,7 +3,9 @@ let player,
   score = 0;
 timeLeft = 0;
 levelCompleted = false;
-function create(index) {
+
+function create(index, color) {
+
   this.add.image(400, 300, "sky");
   platforms = this.physics.add.staticGroup();
   coins = this.physics.add.staticGroup();
@@ -49,28 +51,28 @@ function create(index) {
       }
     }
   }
-
+  choosePlayer(color);
   this.anims.create({
     key: "left",
-    frames: this.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
+    frames: this.anims.generateFrameNumbers(run, { start: 0, end: 3 }),
     frameRate: 10,
     repeat: -1,
   });
 
   this.anims.create({
     key: "turn",
-    frames: [{ key: "dude", frame: 4 }],
+    frames: [{ key: run, frame: 4 }],
     frameRate: 20,
   });
 
   this.anims.create({
     key: "right",
-    frames: this.anims.generateFrameNumbers("dude", { start: 5, end: 8 }),
+    frames: this.anims.generateFrameNumbers(run, { start: 5, end: 8 }),
     frameRate: 10,
     repeat: -1,
   });
 
-  player = this.physics.add.sprite(30, 545, "dude");
+  player = this.physics.add.sprite(30, 545, run);
   player.setScale(0.7);
   player.setBounce(0);
   player.setCollideWorldBounds(true);
@@ -131,3 +133,5 @@ function create(index) {
   this.physics.add.overlap(player, coins, collectCoin, null, this);
   this.physics.add.overlap(player, trophy, DisplayLevelCompleted, null, this);
 }
+
+

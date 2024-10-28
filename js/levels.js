@@ -1,6 +1,5 @@
 var index = 0;
 var game;
-const content = document.getElementById("content");
 
 const button1 = document.getElementById("btn1");
 button1.addEventListener("click", function () {
@@ -22,6 +21,7 @@ button3.addEventListener("click", function () {
 
 function startGame(level) {
   index = level;
+  color=character;
   clearContentFromDiv();
   game = new Phaser.Game(config);
 }
@@ -30,4 +30,9 @@ function clearContentFromDiv() {
   if (content) {
     content.innerHTML = " ";
   }
+}
+if (flag==false){
+  button1.disabled=true;
+  button2.disabled=true;
+  button3.disabled=true;
 }
