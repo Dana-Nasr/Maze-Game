@@ -1,17 +1,17 @@
 let player,
   cursors,
   score = 0;
-timeLeft = 0;
-levelCompleted = false;
+  timeLeft = 0;
+  levelCompleted = false;
 
-function create(index, color) {
-
-  this.add.image(400, 300, "sky");
+function create(index) {
   platforms = this.physics.add.staticGroup();
   coins = this.physics.add.staticGroup();
   trophy = this.physics.add.staticGroup();
-  maze = maze[index - 1];
 
+  //modify addd if else func level
+  this.add.image(400, 300, "sky");
+  maze = maze[index - 1];
   if (index === 1) {
     timeLeft = 60;
   } else if (index === 2) {
@@ -24,6 +24,7 @@ function create(index, color) {
   const tileH = 40;
   const collectorsW = 30;
   const collectorsY = 30;
+
   for (let row = 0; row < maze.length; row++) {
     for (let col = 0; col < maze[row].length; col++) {
       if (maze[row][col] === 1) {
@@ -39,6 +40,7 @@ function create(index, color) {
           .setOrigin(0, 0)
           .refreshBody();
         coin.setCollideWorldBounds(true);
+
         coin.setDisplaySize(collectorsW, collectorsY);
       } else if (maze[row][col] === 3) {
         // Create trophy
@@ -46,12 +48,17 @@ function create(index, color) {
           .create(col * tileW, row * tileH, "prize")
           .setOrigin(0, 0)
           .refreshBody();
+
         prize.setCollideWorldBounds(true);
+
+        //modify :check
         prize.setDisplaySize(collectorsW, collectorsY);
       }
     }
   }
-  choosePlayer(color);
+
+  choosePlayer();
+
   this.anims.create({
     key: "left",
     frames: this.anims.generateFrameNumbers(run, { start: 0, end: 3 }),
@@ -98,7 +105,6 @@ function create(index, color) {
         timeLeft--;
         timerText.setText("Time: " + timeLeft);
       } else if (levelCompleted !== true) {
-        this.scene.pause();
         const gameOverBg = this.add.graphics();
         gameOverBg.fillStyle(0x000000, 0.9);
         gameOverBg.fillRect(200, 200, 400, 150);
@@ -107,6 +113,9 @@ function create(index, color) {
           fontSize: "48px",
           fill: "#ff0000",
           fontStyle: "bold",
+        });
+        this.time.delayedCall(2000, () => {
+          location.reload();
         });
       }
     },
@@ -130,8 +139,8 @@ function create(index, color) {
       fill: "#ffffff",
     });
   }
+
+
   this.physics.add.overlap(player, coins, collectCoin, null, this);
   this.physics.add.overlap(player, trophy, DisplayLevelCompleted, null, this);
 }
-
-

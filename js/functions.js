@@ -1,3 +1,6 @@
+let run;
+var players = ["red", "black", "purple"];
+
 function collectCoin(player, coin) {
   coin.disableBody(true, true);
   score += 10;
@@ -18,12 +21,11 @@ function DisplayLevelCompleted(player, prize) {
     fill: "#00ff00",
     fontStyle: "bold",
   });
+  this.time.delayedCall(2000, () => {
+    location.reload();
+  });
 }
 
-let run;
-var players = ["red", "black", "purple"];
-console.log(character);
-console.log(typeof character);
 function choosePlayer() {
   if (character == 1) {
     run = players[0];
@@ -34,4 +36,3 @@ function choosePlayer() {
     run = players[2];
   }
 }
-
