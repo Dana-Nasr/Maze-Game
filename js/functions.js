@@ -34,3 +34,4 @@ function choosePlayer() {
     run = players[2];
   }
 }
+

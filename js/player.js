@@ -1,32 +1,29 @@
 let character;
 let flag = false;
 const content = document.getElementById("content");
-const playerBack = document.getElementById("black");
+const playerBlack = document.getElementById("black");
 const playerRed = document.getElementById("red");
 const playerpurple = document.getElementById("purple");
 playerRed.addEventListener("click", function () {
-  playerBlack.disabled = true;
-  playerpurple.disabled = true;
+  disabled();
   character = 1;
-  button1.disabled = false;
-  button2.disabled = false;
-  button3.disabled = false;
 });
 
-playerBack.addEventListener("click", function () {
-  playerRed.disabled = true;
-  playerpurple.disabled = true;
+playerBlack.addEventListener("click", function () {
+  disabled();
   character = 2;
-  button1.disabled = false;
-  button2.disabled = false;
-  button3.disabled = false;
 });
 
 playerpurple.addEventListener("click", function () {
+  disabled();
+  character = 3;
+});
+
+function disabled() {
   playerBlack.disabled = true;
   playerpurple.disabled = true;
-  character = 3;
+  playerRed.disabled = true;
   button1.disabled = false;
   button2.disabled = false;
   button3.disabled = false;
-});
+}
