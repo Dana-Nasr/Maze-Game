@@ -47,12 +47,12 @@ nav{
     height: 120vh;
 }
 
-.container > h1, .guide > h1, .charachters > h1, .gameplay > h1{
+.container > h1, .guide > h1, .charachters > h1, .gameplay > h1, .features > h1{
     font-size: 80px;
     line-height: 55px;
 }
 
-.container > p, .guide > p, .charachters > p, .gameplay > p{
+.container > p, .guide > p, .charachters > p, .gameplay > p, .features > p{
     width: 50vw;
     font-size: 30px;
     color: #5F5F5F;
@@ -96,12 +96,11 @@ nav{
 }
 
 
-
 /* Guide section */
 
-.guide{
+.guide, .features{
     background-color: #F5F5F5;
-    height: 100vh;
+    height: 90vh;
 }
 
 .cards{
@@ -139,7 +138,8 @@ nav{
 
 /* Characters Section */
 .charachters{
-    background-color: #F5F5F5;
+    /* background-color: #F5F5F5; */
+    background-color: #E3F7FE;
     height: 90vh;
 }
 
