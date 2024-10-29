@@ -12,26 +12,22 @@ nav{
     position: fixed;
     width: 100%;
     z-index: 2;
-
 }
 
 .logo{
     font-size: 30px;
 }
+
 .logo > a{
     color: white;
     font-weight: bold;
 }
 
-/* .nav-links{
-    align-items: center;
-    justify-content: center;
-} */
-
 .nav-links > li{
     margin-left: 50px;
     transition: 1s;
 }
+
 .nav-links > li:hover{
     transform: scale(1.1);
 }
@@ -42,17 +38,18 @@ nav{
 }
 
 
+
 /* Container div */
 .container{
     height: 120vh;
 }
 
-.container > h1, .guide > h1, .charachters > h1, .gameplay > h1, .features > h1{
+.container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
     font-size: 80px;
     line-height: 55px;
 }
 
-.container > p, .guide > p, .charachters > p, .gameplay > p, .features > p{
+.container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
     width: 50vw;
     font-size: 30px;
     color: #5F5F5F;
@@ -61,7 +58,7 @@ nav{
     z-index: 1;
 }
 
-.container > button, .charachters > button{
+.container > button, .characters > button{
     background-color: #F33030;
     width: 251px;
     height: 52px;
@@ -71,6 +68,7 @@ nav{
 }
 
 
+/* Header images */
 .cloud-1{
     position: absolute;
     top: 200px;
@@ -97,12 +95,12 @@ nav{
 
 
 /* Guide section */
-
 .guide, .features{
     background-color: #F5F5F5;
     height: 90vh;
 }
 
+/* Cards */
 .cards{
     width: 100%;
     text-align: center;
@@ -135,10 +133,8 @@ nav{
 }
 
 
-
 /* Characters Section */
-.charachters{
-    /* background-color: #F5F5F5; */
+.characters{
     background-color: #E3F7FE;
     height: 90vh;
 }
@@ -163,13 +159,13 @@ nav{
 
 
 /* Gameplay section */
-
 .gameplay{
     height: 90vh;
 }
 
+
+/* Parallax effect */
 .parallax {
-    /* Parallax effect */
     width: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -178,8 +174,8 @@ nav{
     background-image: url(../assets/images/parallax.svg);
 }
 
-/* Footer section */
 
+/* Footer section */
 footer{
     background-color: #4AA568;
     justify-content: space-around;
