@@ -2,6 +2,7 @@ let images = ["assets/red.png", "assets/red.png", "assets/purple.png"];
 function preload() {
   this.load.image("sky", "assets/sky.png");
   this.load.image("grass", "assets/grass.png");
+  this.load.image("brown", "assets/brown.png");
   this.load.image("coin", "assets/star.png");
   this.load.image("prize", "assets/prize.png");
   this.load.spritesheet("red", images[0], {
