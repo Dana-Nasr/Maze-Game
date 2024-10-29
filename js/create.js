@@ -11,16 +11,18 @@ function create(index) {
 
   //modify addd if else func level
 
-  maze = maze[index - 1];
   if (index === 1) {
     timeLeft = 60;
     this.add.image(400, 300, "sky");
+    maze = maze[index - 1];
   } else if (index === 2) {
     timeLeft = 45;
     this.add.image(400, 294, "grass");
+    maze = maze[index - 1];
   } else if (index == 3) {
     this.add.image(400, 286, "brown");
     timeLeft = 30;
+    maze = maze[index - 1];
   }
 
   const tileW = 40; //tile dimensions

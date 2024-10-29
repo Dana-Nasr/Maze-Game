@@ -1,0 +1,61 @@
+body {
+  background: url(../assets/images/main.png);
+}
+header {
+  align-items: center;
+  justify-content: space-around;
+  height: 10vh;
+  background-color: #f33030;
+  position: static;
+  width: 100%;
+  z-index: 2;
+}
+.space-between {
+  justify-content: space-between;
+}
+.levels {
+  gap: 20px;
+}
+.players {
+  gap: 20px;
+}
+.players > button {
+  width: 92px;
+  height: 141px;
+  margin-top: 30px;
+  background: url(../assets/images/red.png);
+}
+.red {
+  background: url(../assets/images/red.png);
+}
+.purple {
+}
+.black{
+}
+.levels > button {
+  background-color: var(--button-bg);
+  width: 251px;
+  height: 52px;
+  border-radius: 100px;
+  font-size: 24px;
+  color: var(--button-text);
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.main {
+  width: 100%;
+  height: 90vh;
+}
+h1 {
+  font-size: 70px;
+  margin-top: 20px;
+}
+/* .choose{
+
+    margin-left: 200px;
+    margin-right: 150px
+} */
+canvas {
+  margin-top: 30px;
+}

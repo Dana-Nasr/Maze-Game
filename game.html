@@ -3,27 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Maze Runner</title>
+    <link rel="stylesheet" href="./website/styles/home.css" />
+    <link rel="stylesheet" href="./website/styles/base/base.css" />
+    <link rel="stylesheet" href="./website/styles/base/colors.css" />
+    <link rel="stylesheet" href="./website/styles/game.css" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="website/assets/images/player.svg"
+    />
+
     <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <script src="./website/script.js" defer></script>
   </head>
   <body>
-    <button id="btn1">Level 1</button>
-    <button id="btn2">Level 2</button>
-    <button id="btn3">Level 3</button>
-    <button id="red">red</button>
-    <button id="black">black</button>
-    <button id="purple">purple</button>
+    <header id="header" class="header">
+      <nav class="flex">
+        <div class="logo flex center column">
+          <a href="#header">Maze</a>
+          <a href="#header">Runner</a>
+        </div>
+        <ul class="nav-links flex center">
+          <li><a href="#guide">Game's Guide</a></li>
+          <li><a href="#characters">Characters</a></li>
+          <li><a href="#gameplay">Gameplay</a></li>
+          <li><a href="#features">Future Features</a></li>
+        </ul>
+        <div id="burger" class="burger column">
+          <div class="line line1"></div>
+          <div class="line line2"></div>
+          <div class="line line3"></div>
+        </div>
+      </nav>
+    </header>
 
-    <canvas id="myCanvas">
-      <div id="content"></div>
-      <script src="./js/maze.js"></script>
-      <script src="./js/player.js"></script>
-      <script src="./js/preload.js"></script>
-      <script src="./js/functions.js"></script>
-      <script src="./js/create.js"></script>
-      <script src="./js/update.js"></script>
-      <script src="./js/game.js"></script>
-      <script src="./js/levels.js"></script>
-    </canvas>
+    <div class="flex column center wrap main">
+      <h2>Choose a character then level of difficulty:</h2>
+      <div class="flex column center choose">
+        <div class="flex row center players">
+          <button id="red">red</button>
+          <button id="black">black</button>
+          <button id="purple">purple</button>
+        </div>
+
+        <div class="flex column space-between levels">
+          <button id="btn1">easy</button>
+          <button id="btn2">meduim</button>
+          <button id="btn3">hard</button>
+        </div>
+      </div>
+
+      <canvas id="myCanvas"></canvas>
+    </div>
+
+    <script src="./js/maze.js" defer></script>
+    <script src="./js/player.js" defer></script>
+    <script src="./js/preload.js" defer></script>
+    <script src="./js/functions.js" defer></script>
+    <script src="./js/create.js" defer></script>
+    <script src="./js/update.js" defer></script>
+    <script src="./js/game.js" defer></script>
+    <script src="./js/levels.js" defer></script>
   </body>
 </html>
