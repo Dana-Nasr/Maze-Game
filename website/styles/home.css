@@ -276,5 +276,40 @@ footer{
         font-size: 20px;
     }
 
+    .half-maze{
+        position: absolute;
+        top: 60px;
+        width: 100%;
+    }
 
+    .cloud-1,.cloud-2{
+        width: 200px;
+    }
+    .cloud-1{
+        top:300px;
+    } 
+    .cloud-2{
+        top:400px;
+    } 
+    .trees{
+        width: 100%;
+    }
+
+    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+        font-size: 60px;
+    }
+    
+    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+        font-size: 20px;
+    }
+
+}
+@media (max-width: 400px) {
+    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+        font-size: 50px;
+    }
+    
+    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+        font-size: 15px;
+    }
 }
