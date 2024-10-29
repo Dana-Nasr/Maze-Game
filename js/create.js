@@ -1,8 +1,8 @@
 let player,
   cursors,
   score = 0;
-  timeLeft = 0;
-  levelCompleted = false;
+timeLeft = 0;
+levelCompleted = false;
 
 function create(index) {
   platforms = this.physics.add.staticGroup();
@@ -10,12 +10,14 @@ function create(index) {
   trophy = this.physics.add.staticGroup();
 
   //modify addd if else func level
-  this.add.image(400, 300, "sky");
+
   maze = maze[index - 1];
   if (index === 1) {
     timeLeft = 60;
+    this.add.image(400, 300, "sky");
   } else if (index === 2) {
     timeLeft = 45;
+    this.add.image(400, 280, "grass");
   } else if (index == 3) {
     timeLeft = 30;
   }
@@ -139,7 +141,6 @@ function create(index) {
       fill: "#ffffff",
     });
   }
-
 
   this.physics.add.overlap(player, coins, collectCoin, null, this);
   this.physics.add.overlap(player, trophy, DisplayLevelCompleted, null, this);
