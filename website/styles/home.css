@@ -1,0 +1,403 @@
+header{
+    height: 120vh;
+    background-color: var(--primary-color);
+    position: relative;
+}
+
+nav{
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+    background-color: #F33030;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.logo{
+    font-size: 30px;
+}
+
+.logo > a{
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links > li{
+    margin-left: 50px;
+    transition: 1s;
+}
+
+.nav-links > li:hover{
+    transform: scale(1.1);
+}
+
+.nav-links li a{
+    color: white;
+    font-weight: bold;
+}
+
+
+
+/* Container div */
+.container{
+    height: 120vh;
+}
+
+.container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+    font-size: 80px;
+    line-height: 55px;
+}
+
+.container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+    width: 50vw;
+    font-size: 30px;
+    color: var(--text-color);
+    text-align: center;
+    margin: 50px;
+    z-index: 1;
+}
+
+.container > button, .characters > button{
+    background-color: var(--button-bg);
+    width: 251px;
+    height: 52px;
+    border-radius: 100px;
+    font-size: 24px;
+    color: var(--button-text);
+}
+
+
+/* Header images */
+.half-maze{
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.half-maze-responsive{
+    display: none;
+    
+}
+
+.cloud-1{
+    position: absolute;
+    top: 200px;
+    right: 0;
+}
+
+.cloud-2{
+    position: absolute;
+    top: 300px;
+    left: 0;
+}
+
+.trees{
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+
+/* Guide section */
+.guide, .features{
+    background-color: var(--background-color);
+    height: 90vh;
+}
+
+/* Cards */
+.cards{
+    width: 100%;
+    text-align: center;
+}
+.card{
+    width: 300px;
+    height: 200px;
+    padding: 50px;
+    border-radius: 5px;
+    margin: 30px;
+
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+
+    transition: 1s;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.card > img{
+    width: 40px;
+    display: block;
+    margin: auto;
+}
+.card > h1{
+    margin: 10px;
+}
+
+
+/* Characters Section */
+.characters{
+    background-color: var(--secondary-color);
+    height: 90vh;
+}
+
+.players{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.players > img{
+    width: 80px;
+    margin-left: 50px;
+    margin-right: 50px;
+    transition: 1s;
+}
+.players > img:hover{
+    transform: scale(1.5);
+}
+
+
+/* Gameplay section */
+.gameplay{
+    height: 90vh;
+}
+
+
+/* Parallax effect */
+.parallax {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(../assets/images/parallax.svg);
+}
+
+
+/* Footer section */
+footer{
+    background-color: #4AA568;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    height: 60px;
+    font-weight: bold;
+}
+
+.footer-container{
+    margin-left: 200px;
+}
+
+.footer-container > ul{
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-container > ul > li{
+    margin-left: 20px;
+}
+
+.footer-h1 > h1{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bolder
+}
+
+
+
+/* Burger menu */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger > .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px;
+
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burger.active .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burger.active .line2 {
+    opacity: 0;
+}
+
+.burger.active .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+
+
+/* For screens between 737px and 1096px */
+@media (min-width: 737px) and (max-width: 1096px) {
+    .guide{
+        height: 140vh;
+    }
+
+    .features, .characters{
+        height: 90vh;
+    }
+
+    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+        font-size: 70px;
+    }
+    
+    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+        font-size: 25px;
+    }
+
+    .cloud-1,.cloud-2{
+        width: 300px;
+    }
+    .cloud-1{
+        top:300px;
+    } 
+    .cloud-2{
+        top:400px;
+    } 
+}
+
+
+/* Responsiveness  */
+@media (max-width: 737px) {
+    /* Responsiveness for the navbar  */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(10px);
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+    }
+    .nav-links.active {
+        transform: translateX(0);
+    }
+    .nav-links li{
+        margin: 5%;
+    }
+
+    .active{
+        z-index: -1;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+    .burger {
+        display: flex;
+    }
+
+    .logo > a{
+        font-size: 20px;
+    }
+
+    .cloud-1,.cloud-2{
+        width: 200px;
+    }
+    .cloud-1{
+        top:300px;
+    } 
+    .cloud-2{
+        top:400px;
+    } 
+    .trees{
+        width: 100%;
+    }
+
+    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+        font-size: 50px;
+    }
+    
+    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+        font-size: 18px;
+    }
+
+    .guide{
+        height: 180vh;
+    }
+
+    .features{
+        height: 140vh;
+    }
+    .characters{
+        height: 100vh;
+    }
+    .players > img{
+        width: 100px;
+        margin-bottom: 0px;
+    }
+    
+    .gameplay > video{
+        width: 300px;
+    }
+    
+    
+    /* Footer section */
+    footer{
+        height: 100px;
+    }
+    
+    .footer-container{
+        margin-left: 0px;
+        flex-direction: column;
+    }
+    
+    .footer-container > ul > li{
+        margin-left: 0px;
+    }
+    
+    .footer-h1 > h1{
+        font-size: 20px;
+    }
+    .footer-container > h1{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+}
+@media (max-width: 418px) {
+    
+    .half-maze{
+        display: none;
+    }
+    .half-maze-responsive{
+        display: block;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+    }
+    
+    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+        font-size: 50px;
+    }
+    
+    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+        font-size: 15px;
+    }
+    .players > img{
+        margin-bottom: 50px;
+    }
+    .characters{
+        height: 140vh;
+    }
+}
