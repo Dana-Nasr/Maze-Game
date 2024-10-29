@@ -1,4 +1,8 @@
-let images = ["game/assets/red.png", "game/assets/red.png", "game/assets/purple.png"];
+let images = [
+  "game/assets/red.png",
+  "game/assets/black.png",
+  "game/assets/purple.png",
+];
 function preload() {
   this.load.image("sky", "game/assets/sky.png");
   this.load.image("grass", "game/assets/grass.png");

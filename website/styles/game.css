@@ -28,10 +28,10 @@ header {
   background: url(../assets/images/red.png);
 }
 .purple {
-  background: url(../assets/images/red.png);
+  background: url(../assets/images/purple.png);
 }
 .black {
-  background: url(../assets/images/red.png);
+  background: url(../assets/images/black.png);
 }
 .levels > button {
   background-color: var(--button-bg);
