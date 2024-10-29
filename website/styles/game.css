@@ -3,6 +3,9 @@ body {
   background: url(../assets/images/main.png);
   overflow: hidden;
 }
+.user{
+    overflow:auto; 
+}
 header {
   align-items: center;
   justify-content: space-around;
@@ -62,6 +65,33 @@ h2 {
   font-size: 40px;
   margin-top: 30vh;
 }
+.second-h2 {
+  margin-top: 2vh;
+}
 canvas {
   margin-top: 10px;
+}
+h1 {
+  font-size: 80px;
+  text-align: center;
+}
+.half {
+  width: 50%;
+  height: 60%;
+}
+.start {
+  background-color: var(--button-bg);
+  width: 251px;
+  height: 52px;
+  border-radius: 100px;
+  font-size: 24px;
+  color: var(--button-text);
+}
+input {
+  margin-bottom: 40px;
+  border-radius: 2px;
+  opacity: 0.7;
+  font-size: 20px;
+  width: 251px;
+  height: 52px;
 }

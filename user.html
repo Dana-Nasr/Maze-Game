@@ -14,12 +14,9 @@
       href="website/assets/images/player.svg"
     />
 
-    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
     <script src="./website/script.js" defer></script>
-
-    <script src="./game/js/loadUsername.js" defer></script>
   </head>
-  <body>
+  <body class="user">
     <header id="header" class="header">
       <nav class="flex">
         <div class="logo flex center column">
@@ -39,37 +36,15 @@
         </div>
       </nav>
     </header>
-
-    <div class="flex column center main">
-      <h2 id="welcome-message">
-        <h2 id="message" class="second-h2">
-          Press on character then choose the level of difficulty:
-        </h2>
-      </h2>
-      <div class="flex column center choose">
-        <div class="flex row space-between player">
-          <button id="red" class="red"></button>
-          <button id="black" class="black"></button>
-          <button id="purple" class="purple"></button>
-        </div>
-
-        <div class="flex column center wrap levels">
-          <button id="btn1">easy</button>
-          <button id="btn2">meduim</button>
-          <button id="btn3">hard</button>
-        </div>
-      </div>
-
-      <canvas id="myCanvas"></canvas>
+    <div class="flex row center main">
+      <div class="flex space-between column form half">
+        <h1>ENTER YOU NAME AND PLAY NOW!!</h1>
+        <div class="flex column center ">
+        <input type="text" placeholder="Username" id="username" />
+        <button class="start" id="start-btn">START</button>
     </div>
-
-    <script src="./game/js/maze.js"></script>
-    <script src="./game/js/player.js"></script>
-    <script src="./game/js/preload.js"></script>
-    <script src="./game/js/functions.js"></script>
-    <script src="./game/js/create.js"></script>
-    <script src="./game/js/update.js"></script>
-    <script src="./game/js/game.js"></script>
-    <script src="./game/js/levels.js"></script>
+      </div>
+    </div>
+    <script src="./game/js/user.js"></script>
   </body>
 </html>

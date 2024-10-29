@@ -1,7 +1,7 @@
 var index = 0;
 var game;
 const h2 = document.querySelector("h2");
-const user = document.getElementById("username");
+const secondh2 = document.getElementById("message");
 const button1 = document.getElementById("btn1");
 button1.addEventListener("click", function () {
   stop();
@@ -40,11 +40,11 @@ if (flag == false) {
 }
 function stop() {
   h2.style.display = "none";
+  secondh2.style.display = "none";
   button1.style.display = "none";
   button2.style.display = "none";
   button3.style.display = "none";
   playerBlack.style.display = "none";
   playerRed.style.display = "none";
   playerpurple.style.display = "none";
-  user.style.display = "none";
 }
