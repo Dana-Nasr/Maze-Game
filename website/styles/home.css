@@ -1,6 +1,6 @@
 header{
     height: 120vh;
-    background-color: lightblue;
+    background-color: var(--primary-color);
     position: relative;
 }
 
@@ -52,19 +52,19 @@ nav{
 .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
     width: 50vw;
     font-size: 30px;
-    color: #5F5F5F;
+    color: var(--text-color);
     text-align: center;
     margin: 50px;
     z-index: 1;
 }
 
 .container > button, .characters > button{
-    background-color: #F33030;
+    background-color: var(--button-bg);
     width: 251px;
     height: 52px;
     border-radius: 100px;
     font-size: 24px;
-    color: white;
+    color: var(--button-text);
 }
 
 
@@ -96,7 +96,7 @@ nav{
 
 /* Guide section */
 .guide, .features{
-    background-color: #F5F5F5;
+    background-color: var(--background-color);
     height: 90vh;
 }
 
@@ -135,7 +135,7 @@ nav{
 
 /* Characters Section */
 .characters{
-    background-color: #E3F7FE;
+    background-color: var(--secondary-color);
     height: 90vh;
 }
 
