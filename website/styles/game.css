@@ -20,10 +20,11 @@ header {
 .players {
   gap: 20px;
 }
-.players > button {
+.player > button {
   width: 127px;
   height: 210px;
   margin-top: 30px;
+  margin-bottom: 8px;
   border-radius: 5px;
   transform: scale(0.5);
 }
@@ -45,7 +46,7 @@ header {
   color: var(--button-text);
 }
 
-.players > button:hover {
+.player > button:hover {
   transform: scale(1.1);
 }
 .wrap {
