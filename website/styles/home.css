@@ -77,6 +77,7 @@ nav{
 
 .half-maze-responsive{
     display: none;
+    
 }
 
 .cloud-1{
@@ -241,8 +242,38 @@ footer{
 
 
 
+/* For screens between 737px and 1096px */
+@media (min-width: 737px) and (max-width: 1096px) {
+    .guide{
+        height: 140vh;
+    }
+
+    .features, .characters{
+        height: 90vh;
+    }
+
+    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+        font-size: 70px;
+    }
+    
+    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+        font-size: 25px;
+    }
+
+    .cloud-1,.cloud-2{
+        width: 300px;
+    }
+    .cloud-1{
+        top:300px;
+    } 
+    .cloud-2{
+        top:400px;
+    } 
+}
+
+
 /* Responsiveness  */
-@media (max-width: 800px) {
+@media (max-width: 737px) {
     /* Responsiveness for the navbar  */
     .nav-links {
         display: flex;
@@ -294,47 +325,47 @@ footer{
     }
 
     .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
-        font-size: 60px;
+        font-size: 50px;
     }
     
     .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .guide{
         height: 180vh;
     }
 
-    .features, .characters{
+    .features{
         height: 140vh;
     }
-    .players > img{
-        margin-bottom: 50px;
-        width: 100px;
+    .characters{
+        height: 100vh;
     }
-    .players > img:last-child{
+    .players > img{
+        width: 100px;
         margin-bottom: 0px;
     }
-
+    
     .gameplay > video{
         width: 300px;
     }
-
-
+    
+    
     /* Footer section */
     footer{
         height: 100px;
     }
-
+    
     .footer-container{
         margin-left: 0px;
         flex-direction: column;
     }
-
+    
     .footer-container > ul > li{
         margin-left: 0px;
     }
-
+    
     .footer-h1 > h1{
         font-size: 20px;
     }
@@ -343,17 +374,16 @@ footer{
         margin-bottom: 10px;
     }
     
-
 }
-@media (max-width: 400px) {
-
+@media (max-width: 418px) {
+    
     .half-maze{
         display: none;
     }
     .half-maze-responsive{
         display: block;
         position: absolute;
-        top: 70px;
+        top: 0px;
         width: 100%;
     }
     
@@ -363,5 +393,11 @@ footer{
     
     .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
         font-size: 15px;
+    }
+    .players > img{
+        margin-bottom: 50px;
+    }
+    .characters{
+        height: 140vh;
     }
 }
