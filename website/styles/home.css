@@ -75,6 +75,10 @@ nav{
     width: 100%;
 }
 
+.half-maze-responsive{
+    display: none;
+}
+
 .cloud-1{
     position: absolute;
     top: 200px;
@@ -276,12 +280,6 @@ footer{
         font-size: 20px;
     }
 
-    .half-maze{
-        position: absolute;
-        top: 60px;
-        width: 100%;
-    }
-
     .cloud-1,.cloud-2{
         width: 200px;
     }
@@ -348,6 +346,17 @@ footer{
 
 }
 @media (max-width: 400px) {
+
+    .half-maze{
+        display: none;
+    }
+    .half-maze-responsive{
+        display: block;
+        position: absolute;
+        top: 70px;
+        width: 100%;
+    }
+    
     .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
         font-size: 50px;
     }
