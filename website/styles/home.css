@@ -303,6 +303,49 @@ footer{
         font-size: 20px;
     }
 
+    .guide{
+        height: 180vh;
+    }
+
+    .features, .characters{
+        height: 140vh;
+    }
+    .players > img{
+        margin-bottom: 50px;
+        width: 100px;
+    }
+    .players > img:last-child{
+        margin-bottom: 0px;
+    }
+
+    .gameplay > video{
+        width: 300px;
+    }
+
+
+    /* Footer section */
+    footer{
+        height: 100px;
+    }
+
+    .footer-container{
+        margin-left: 0px;
+        flex-direction: column;
+    }
+
+    .footer-container > ul > li{
+        margin-left: 0px;
+    }
+
+    .footer-h1 > h1{
+        font-size: 20px;
+    }
+    .footer-container > h1{
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+    
+
 }
 @media (max-width: 400px) {
     .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
