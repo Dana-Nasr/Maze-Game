@@ -1,5 +1,6 @@
 body {
   background: url(../assets/images/main.png);
+  height: 100%;
 }
 header {
   align-items: center;
@@ -20,18 +21,20 @@ header {
   gap: 20px;
 }
 .players > button {
-  width: 92px;
-  height: 141px;
+  width: 127px;
+  height: 210px;
   margin-top: 30px;
+  border-radius: 5px;
+  transform: scale(0.5);
 }
 .red {
-  background: url(../assets/images/red.png);
+  background: url(http://127.0.0.1:5501/website/assets/images/charac-2.svg);
 }
 .purple {
-  background: url(../assets/images/purple.png);
+  background: url(http://127.0.0.1:5501/website/assets/images/charac-1.svg);
 }
 .black {
-  background: url(../assets/images/black.png);
+  background: url(http://127.0.0.1:5501/website/assets/images/charac-3.svg);
 }
 .levels > button {
   background-color: var(--button-bg);
@@ -40,6 +43,10 @@ header {
   border-radius: 100px;
   font-size: 24px;
   color: var(--button-text);
+}
+
+.players > button:hover {
+  transform: scale(1.1);
 }
 .wrap {
   flex-wrap: wrap;
@@ -50,8 +57,8 @@ header {
 }
 
 h2 {
-  font-size: 50px;
-  margin-top: 25vh;
+  font-size: 40px;
+  margin-top: 30vh;
 }
 canvas {
   margin-top: 30px;
