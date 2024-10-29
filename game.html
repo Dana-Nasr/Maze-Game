@@ -39,31 +39,39 @@
     </header>
 
     <div class="flex column center main">
+      <div class="flex column center main">
+       
+        <div class="username-input" id="username">
+          <label for="username">Enter your username:</label>
+          <input type="text" id="username" placeholder="Username">
+          <button id="submit-username">Submit</button>
+        </div>
+        
       <h2>Press on character then choose the level of difficulty:</h2>
       <div class="flex column center choose">
-        <div class="flex row center player">
+        <div class="flex row space-between player">
           <button id="red" class="red"></button>
           <button id="black" class="black"></button>
           <button id="purple" class="purple"></button>
         </div>
 
-        <div class="flex column space-between levels">
+        <div class="flex column center wrap levels">
           <button id="btn1">easy</button>
           <button id="btn2">meduim</button>
           <button id="btn3">hard</button>
         </div>
       </div>
-
+   
       <canvas id="myCanvas"></canvas>
     </div>
 
-    <script src="./game/js/maze.js" defer></script>
-    <script src="./game/js/player.js" defer></script>
-    <script src="./game/js/preload.js" defer></script>
-    <script src="./game/js/functions.js" defer></script>
-    <script src="./game/js/create.js" defer></script>
-    <script src="./game/js/update.js" defer></script>
-    <script src="./game/js/game.js" defer></script>
-    <script src="./game/js/levels.js" defer></script>
+    <script src="./game/js/maze.js"></script>
+    <script src="./game/js/player.js"></script>
+    <script src="./game/js/preload.js"></script>
+    <script src="./game/js/functions.js"></script>
+    <script src="./game/js/create.js"></script>
+    <script src="./game/js/update.js"></script>
+    <script src="./game/js/game.js"></script>
+    <script src="./game/js/levels.js"></script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 let player,
   cursors,
+  puzzle = 0,
   score = 0;
 timeLeft = 0;
 levelCompleted = false;
@@ -15,7 +16,6 @@ function create(index) {
   if (index === 1) {
     timeLeft = 60;
     this.add.image(400, 300, "sky");
-    
   } else if (index === 2) {
     timeLeft = 45;
     this.add.image(400, 294, "grass");
@@ -112,7 +112,8 @@ function create(index) {
         const gameOverBg = this.add.graphics();
         gameOverBg.fillStyle(0x000000, 0.9);
         gameOverBg.fillRect(200, 200, 400, 150);
-
+        puzzle += 1;
+        console.log(puzzle);
         this.add.text(200, 250, " Game Over :(", {
           fontSize: "48px",
           fill: "#ff0000",

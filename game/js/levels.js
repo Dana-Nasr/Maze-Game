@@ -1,6 +1,7 @@
 var index = 0;
 var game;
 const h2 = document.querySelector("h2");
+const user = document.getElementById("username");
 const button1 = document.getElementById("btn1");
 button1.addEventListener("click", function () {
   stop();
@@ -45,4 +46,5 @@ function stop() {
   playerBlack.style.display = "none";
   playerRed.style.display = "none";
   playerpurple.style.display = "none";
+  user.style.display = "none";
 }
