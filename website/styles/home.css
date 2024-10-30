@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'SeymourOne';
+    src: url(../assets/Fonts/SeymourOne-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
 header{
     height: 120vh;
     background-color: var(--primary-color);
@@ -16,6 +23,7 @@ nav{
 
 .logo{
     font-size: 30px;
+    font-family: 'SeymourOne',sans-serif;
 }
 
 .logo > a{
@@ -45,6 +53,7 @@ nav{
 }
 
 .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+    font-family: 'SeymourOne',sans-serif;
     font-size: 80px;
     line-height: 55px;
 }
