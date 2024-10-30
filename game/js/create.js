@@ -21,7 +21,7 @@ function create(index) {
     this.add.image(400, 294, "grass");
   } else if (index == 3) {
     this.add.image(400, 286, "brown");
-    timeLeft = 3;
+    timeLeft = 30;
   }
 
   const tileW = 40; //tile dimensions
