@@ -9,7 +9,7 @@ function create(index) {
   platforms = this.physics.add.staticGroup();
   coins = this.physics.add.staticGroup();
   trophy = this.physics.add.staticGroup();
-
+  level = " ";
   //modify addd if else func level
 
   n_maze = maze[index - 1];
@@ -28,7 +28,9 @@ function create(index) {
   const tileH = 40;
   const collectorsW = 30;
   const collectorsY = 30;
-
+  console.log("hi");
+  console.log(index);
+  console.log(index);
   for (let row = 0; row < n_maze.length; row++) {
     for (let col = 0; col < n_maze[row].length; col++) {
       if (n_maze[row][col] === 1) {
@@ -105,10 +107,13 @@ function create(index) {
   this.time.addEvent({
     delay: 1000,
     callback: () => {
-      if (timeLeft > 0 && levelCompleted !== true) {
+      if (timeLeft > 0) {
         timeLeft--;
-        timerText.setText("Time: " + timeLeft);
-      } else if (levelCompleted !== true) {
+        console.log(timeLeft);
+        if (timerText) {
+          timerText.setText("Time: " + timeLeft);
+        }
+      } else {
         const gameOverBg = this.add.graphics();
         gameOverBg.fillStyle(0x000000, 0.9);
         gameOverBg.fillRect(200, 200, 400, 150);
@@ -120,7 +125,7 @@ function create(index) {
           fontStyle: "bold",
         });
         this.time.delayedCall(1500, () => {
-          this.scene.restart({ index: 2 });
+          this.scene.restart();
         });
       }
     },
@@ -161,21 +166,34 @@ function DisplayLevelCompleted(player, prize, scene) {
   destroyMaze();
   player.setVelocity(0);
 
-  const levelCompleteBg = player.scene.add.graphics();
+  const levelCompleteBg = scene.add.graphics();
   levelCompleteBg.fillStyle(0x000000, 0.9);
   levelCompleteBg.fillRect(200, 200, 400, 150);
 
-  player.scene.add.text(210, 250, "Level Completed ;)", {
+  scene.add.text(210, 250, "Level Completed ;)", {
     fontSize: "36px",
     fill: "#00ff00",
     fontStyle: "bold",
   });
-  this.time.delayedCall(1500, () => {
-    create(2);
+
+  scene.time.delayedCall(1500, () => {
+    if (index < 4) {
+      index += 1;
+      timeLeft = 30;
+    }
+    console.log(index);
+    scene.create();
   });
 }
+
 function destroyMaze() {
   platforms.clear(true, true);
   coins.clear(true, true);
   trophy.clear(true, true);
+  level.destroy();
+  level = null;
+  timerText.destroy();
+  timerText = null;
+  scoreText.destroy();
+  scoreText = null;
 }
