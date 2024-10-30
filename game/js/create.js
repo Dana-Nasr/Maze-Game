@@ -18,9 +18,9 @@ function create(index) {
     this.add.image(400, 300, "sky");
   } else if (index === 2) {
     timeLeft = 45;
-    this.add.image(400, 294, "grass");
+    this.add.image(400, 300, "grass");
   } else if (index == 3) {
-    this.add.image(400, 286, "brown");
+    this.add.image(400, 300, "brown");
     timeLeft = 30;
   }
 
@@ -182,7 +182,7 @@ function DisplayLevelCompleted(player, prize, scene) {
   scene.time.delayedCall(1500, () => {
     if (index < 4) {
       index += 1;
-      timeLeft = 30;
+      //timeLeft = 30;
     }
     console.log(index);
     scene.create();
