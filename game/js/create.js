@@ -4,7 +4,7 @@ let player,
   score = 0;
 timeLeft = 0;
 levelCompleted = false;
-let timerEvent; // Store the timer event
+let timerEvent;
 function create(index) {
   platforms = this.physics.add.staticGroup();
   coins = this.physics.add.staticGroup();
@@ -104,7 +104,7 @@ function create(index) {
     fill: "#ffffff",
   });
   if (timerEvent) {
-    timerEvent.remove(); // Clear the previous timer event if it exists
+    timerEvent.remove();
   }
   timerEvent = this.time.addEvent({
     delay: 1000,
@@ -154,38 +154,32 @@ function create(index) {
   }
 
   this.physics.add.overlap(player, coins, collectCoin, null, this);
-  this.physics.add.overlap(
-    player,
-    trophy,
-    (player, prize) => DisplayLevelCompleted(player, prize, this),
-    null,
-    this
-  );
+  this.physics.add.overlap(player, trophy, DisplayLevelCompleted, null, this);
 }
 
-function DisplayLevelCompleted(player, prize, scene) {
+function DisplayLevelCompleted(player, prize) {
   prize.disableBody(true, true);
   levelCompleted = true;
   destroyMaze();
   player.setVelocity(0);
 
-  const levelCompleteBg = scene.add.graphics();
+  const levelCompleteBg = this.add.graphics();
   levelCompleteBg.fillStyle(0x000000, 0.9);
   levelCompleteBg.fillRect(200, 200, 400, 150);
 
-  scene.add.text(210, 250, "Level Completed ;)", {
+  this.add.text(210, 250, "Level Completed ;)", {
     fontSize: "36px",
     fill: "#00ff00",
     fontStyle: "bold",
   });
 
-  scene.time.delayedCall(1500, () => {
+  this.time.delayedCall(1500, () => {
     if (index < 4) {
       index += 1;
       //timeLeft = 30;
     }
     console.log(index);
-    scene.create();
+    this.create();
   });
 }
 
