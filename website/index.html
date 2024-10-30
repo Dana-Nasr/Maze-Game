@@ -32,20 +32,34 @@
             </div>
         </nav>
 
-        <div class="container flex center column">
-            <h1>
-                Maze
-            </h1>
-            <h1>
-                Runner
-            </h1>
+        <div class="header-content flex">
+            <div class="container flex center column">
+                <h1>
+                    Maze
+                </h1>
+                <h1>
+                    Runner
+                </h1>
 
-            <p>
-                The Maze Runner game is a fun maze game where you travel through different paths and try not to get lost until you reach your final destination!
-            </p>
-            <button id="start">
-                Play Now
-            </button>
+                <p>
+                    The Maze Runner game is a fun maze game where you travel through different paths and try not to get lost until you reach your final destination!
+                </p>
+                <button id="start">
+                    Play Now
+                </button>
+            </div>
+            <div class="sign-in-container flex center column">
+                <h2>Sign In</h2>
+                <form id="signInForm" class="sign-in-form" action="#" method="POST">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="submit">Sign In</button>
+                </form>
+                <p>Don't have an account? <a href="#sign-up">Sign Up</a></p>
+            </div>
+
         </div>
 
         <img class="cloud-1" src="assets/images/cloud-1.svg" alt="">
