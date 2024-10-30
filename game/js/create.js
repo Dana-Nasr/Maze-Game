@@ -12,7 +12,7 @@ function create(index) {
 
   //modify addd if else func level
 
-  maze = maze[index - 1];
+  n_maze = maze[index - 1];
   if (index === 1) {
     timeLeft = 60;
     this.add.image(400, 300, "sky");
@@ -21,7 +21,7 @@ function create(index) {
     this.add.image(400, 294, "grass");
   } else if (index == 3) {
     this.add.image(400, 286, "brown");
-    timeLeft = 30;
+    timeLeft = 3;
   }
 
   const tileW = 40; //tile dimensions
@@ -29,15 +29,15 @@ function create(index) {
   const collectorsW = 30;
   const collectorsY = 30;
 
-  for (let row = 0; row < maze.length; row++) {
-    for (let col = 0; col < maze[row].length; col++) {
-      if (maze[row][col] === 1) {
+  for (let row = 0; row < n_maze.length; row++) {
+    for (let col = 0; col < n_maze[row].length; col++) {
+      if (n_maze[row][col] === 1) {
         const wall = platforms
           .create(col * tileW, row * tileH, "tile")
           .setOrigin(0, 0)
           .refreshBody();
         wall.setDisplaySize(tileW, tileH);
-      } else if (maze[row][col] === 2) {
+      } else if (n_maze[row][col] === 2) {
         // Create coins
         const coin = coins
           .create(col * tileW, row * tileH, "coin")
@@ -46,7 +46,7 @@ function create(index) {
         coin.setCollideWorldBounds(true);
 
         coin.setDisplaySize(collectorsW, collectorsY);
-      } else if (maze[row][col] === 3) {
+      } else if (n_maze[row][col] === 3) {
         // Create trophy
         const prize = trophy
           .create(col * tileW, row * tileH, "prize")
@@ -119,8 +119,8 @@ function create(index) {
           fill: "#ff0000",
           fontStyle: "bold",
         });
-        this.time.delayedCall(2000, () => {
-          location.reload();
+        this.time.delayedCall(1500, () => {
+          this.scene.restart({ index: 2 });
         });
       }
     },
@@ -146,5 +146,36 @@ function create(index) {
   }
 
   this.physics.add.overlap(player, coins, collectCoin, null, this);
-  this.physics.add.overlap(player, trophy, DisplayLevelCompleted, null, this);
+  this.physics.add.overlap(
+    player,
+    trophy,
+    (player, prize) => DisplayLevelCompleted(player, prize, this),
+    null,
+    this
+  );
+}
+
+function DisplayLevelCompleted(player, prize, scene) {
+  prize.disableBody(true, true);
+  levelCompleted = true;
+  destroyMaze();
+  player.setVelocity(0);
+
+  const levelCompleteBg = player.scene.add.graphics();
+  levelCompleteBg.fillStyle(0x000000, 0.9);
+  levelCompleteBg.fillRect(200, 200, 400, 150);
+
+  player.scene.add.text(210, 250, "Level Completed ;)", {
+    fontSize: "36px",
+    fill: "#00ff00",
+    fontStyle: "bold",
+  });
+  this.time.delayedCall(1500, () => {
+    create(2);
+  });
+}
+function destroyMaze() {
+  platforms.clear(true, true);
+  coins.clear(true, true);
+  trophy.clear(true, true);
 }

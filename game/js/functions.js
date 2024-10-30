@@ -7,24 +7,24 @@ function collectCoin(player, coin) {
   scoreText.setText("Score: " + score);
 }
 
-function DisplayLevelCompleted(player, prize) {
-  prize.disableBody(true, true);
-  levelCompleted = true;
-  player.setVelocity(0);
+// function DisplayLevelCompleted(player, prize) {
+//   prize.disableBody(true, true);
+//   levelCompleted = true;
+//   player.setVelocity(0);
 
-  const levelCompleteBg = player.scene.add.graphics();
-  levelCompleteBg.fillStyle(0x000000, 0.9);
-  levelCompleteBg.fillRect(200, 200, 400, 150);
+//   const levelCompleteBg = player.scene.add.graphics();
+//   levelCompleteBg.fillStyle(0x000000, 0.9);
+//   levelCompleteBg.fillRect(200, 200, 400, 150);
 
-  player.scene.add.text(210, 250, "Level Completed ;)", {
-    fontSize: "36px",
-    fill: "#00ff00",
-    fontStyle: "bold",
-  });
-  this.time.delayedCall(2000, () => {
-    location.reload();
-  });
-}
+//   player.scene.add.text(210, 250, "Level Completed ;)", {
+//     fontSize: "36px",
+//     fill: "#00ff00",
+//     fontStyle: "bold",
+//   });
+//   this.time.delayedCall(2000, () => {
+//     location.reload();
+//   });
+// }
 
 function choosePlayer() {
   if (character == 1) {
