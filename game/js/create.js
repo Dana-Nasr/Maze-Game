@@ -4,7 +4,7 @@ let player,
   score = 0;
 timeLeft = 0;
 levelCompleted = false;
-
+let timerEvent; // Store the timer event
 function create(index) {
   platforms = this.physics.add.staticGroup();
   coins = this.physics.add.staticGroup();
@@ -103,8 +103,10 @@ function create(index) {
     fontSize: "32px",
     fill: "#ffffff",
   });
-
-  this.time.addEvent({
+  if (timerEvent) {
+    timerEvent.remove(); // Clear the previous timer event if it exists
+  }
+  timerEvent = this.time.addEvent({
     delay: 1000,
     callback: () => {
       if (timeLeft > 0) {
@@ -114,6 +116,7 @@ function create(index) {
           timerText.setText("Time: " + timeLeft);
         }
       } else {
+        score = 0;
         const gameOverBg = this.add.graphics();
         gameOverBg.fillStyle(0x000000, 0.9);
         gameOverBg.fillRect(200, 200, 400, 150);
@@ -196,4 +199,5 @@ function destroyMaze() {
   timerText = null;
   scoreText.destroy();
   scoreText = null;
+  score = 0;
 }
