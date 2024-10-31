@@ -5,8 +5,8 @@ let images = [
 ];
 function preload() {
   this.load.image("sky", "game/assets/sky.png");
-  this.load.image("grass", "game/assets/grass.png");
-  this.load.image("brown", "game/assets/brown.png");
+  this.load.image("grass", "game/assets/green1.jpg");
+  this.load.image("brown", "game/assets/brown1.png");
   this.load.image("coin", "game/assets/star.png");
   this.load.image("prize", "game/assets/prize.png");
   this.load.spritesheet("red", images[0], {

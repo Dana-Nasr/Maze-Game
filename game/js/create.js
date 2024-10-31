@@ -4,7 +4,7 @@ let player,
   score = 0;
 timeLeft = 0;
 levelCompleted = false;
-
+let timerEvent;
 function create(index) {
   platforms = this.physics.add.staticGroup();
   coins = this.physics.add.staticGroup();
@@ -18,9 +18,9 @@ function create(index) {
     this.add.image(400, 300, "sky");
   } else if (index === 2) {
     timeLeft = 45;
-    this.add.image(400, 294, "grass");
+    this.add.image(400, 300, "grass");
   } else if (index == 3) {
-    this.add.image(400, 286, "brown");
+    this.add.image(400, 300, "brown");
     timeLeft = 30;
   }
 
@@ -103,8 +103,10 @@ function create(index) {
     fontSize: "32px",
     fill: "#ffffff",
   });
-
-  this.time.addEvent({
+  if (timerEvent) {
+    timerEvent.remove();
+  }
+  timerEvent = this.time.addEvent({
     delay: 1000,
     callback: () => {
       if (timeLeft > 0) {
@@ -114,6 +116,7 @@ function create(index) {
           timerText.setText("Time: " + timeLeft);
         }
       } else {
+        score = 0;
         const gameOverBg = this.add.graphics();
         gameOverBg.fillStyle(0x000000, 0.9);
         gameOverBg.fillRect(200, 200, 400, 150);
@@ -151,38 +154,32 @@ function create(index) {
   }
 
   this.physics.add.overlap(player, coins, collectCoin, null, this);
-  this.physics.add.overlap(
-    player,
-    trophy,
-    (player, prize) => DisplayLevelCompleted(player, prize, this),
-    null,
-    this
-  );
+  this.physics.add.overlap(player, trophy, DisplayLevelCompleted, null, this);
 }
 
-function DisplayLevelCompleted(player, prize, scene) {
+function DisplayLevelCompleted(player, prize) {
   prize.disableBody(true, true);
   levelCompleted = true;
   destroyMaze();
   player.setVelocity(0);
 
-  const levelCompleteBg = scene.add.graphics();
+  const levelCompleteBg = this.add.graphics();
   levelCompleteBg.fillStyle(0x000000, 0.9);
   levelCompleteBg.fillRect(200, 200, 400, 150);
 
-  scene.add.text(210, 250, "Level Completed ;)", {
+  this.add.text(210, 250, "Level Completed ;)", {
     fontSize: "36px",
     fill: "#00ff00",
     fontStyle: "bold",
   });
 
-  scene.time.delayedCall(1500, () => {
+  this.time.delayedCall(1500, () => {
     if (index < 4) {
       index += 1;
-      timeLeft = 30;
+      //timeLeft = 30;
     }
     console.log(index);
-    scene.create();
+    this.create();
   });
 }
 
@@ -196,4 +193,5 @@ function destroyMaze() {
   timerText = null;
   scoreText.destroy();
   scoreText = null;
+  score = 0;
 }
