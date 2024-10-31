@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'SeymourOne';
+    src: url(../assets/Fonts/SeymourOne-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sintony';
+    src: url(../assets/Fonts/Sintony-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
 header{
     height: 120vh;
     background-color: var(--primary-color);
@@ -6,7 +20,7 @@ header{
 
 nav{
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 10vh;
     background-color: #F33030;
     position: fixed;
@@ -15,12 +29,20 @@ nav{
 }
 
 .logo{
-    font-size: 30px;
+    font-size: 20px;
+    font-family: 'SeymourOne',sans-serif;
+    flex: 1;
+    align-items: center;
 }
 
-.logo > a{
+.logo-links > a{
     color: white;
     font-weight: bold;
+}
+
+.nav-links{
+    font-family: 'SeymourOne',sans-serif;
+    flex: 3;
 }
 
 .nav-links > li{
@@ -44,12 +66,19 @@ nav{
     height: 120vh;
 }
 
-.container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+.guide > h1, .characters > h1, .tutorial > h1, .features > h1{
+    font-size: 60px;
+    line-height: 55px;
+    font-family: 'SeymourOne',sans-serif;
+
+}
+.container > h1 {
     font-size: 80px;
     line-height: 55px;
+    font-family: 'SeymourOne',sans-serif;
 }
 
-.container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+.container > p, .guide > p, .characters > p, .tutorial > p, .features > p{
     width: 50vw;
     font-size: 30px;
     color: var(--text-color);
@@ -116,7 +145,7 @@ nav{
     width: 300px;
     height: 200px;
     padding: 50px;
-    border-radius: 5px;
+    border-radius: 30px;
     margin: 30px;
 
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
@@ -139,6 +168,9 @@ nav{
     margin: 10px;
 }
 
+.card > p{
+    color: var(--text-color);
+}
 
 /* Characters Section */
 .characters{
@@ -165,9 +197,12 @@ nav{
 }
 
 
-/* Gameplay section */
-.gameplay{
+/* tutorial section */
+.tutorial{
     height: 90vh;
+}
+.tutorial > video{
+    border-radius: 12px;
 }
 
 
@@ -252,11 +287,11 @@ footer{
         height: 90vh;
     }
 
-    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+    .container > h1 {
         font-size: 70px;
     }
     
-    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+    .container > p, .guide > p, .characters > p, .tutorial > p, .features > p{
         font-size: 25px;
     }
 
@@ -305,6 +340,10 @@ footer{
     }
     .burger {
         display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+
     }
 
     .logo > a{
@@ -324,11 +363,15 @@ footer{
         width: 100%;
     }
 
-    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+    .container > h1 {
+        font-size: 60px;
+    }
+
+    .guide > h1, .characters > h1, .tutorial > h1, .features > h1{
         font-size: 50px;
     }
-    
-    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+
+    .container > p, .guide > p, .characters > p, .tutorial > p, .features > p{
         font-size: 18px;
     }
 
@@ -347,8 +390,8 @@ footer{
         margin-bottom: 0px;
     }
     
-    .gameplay > video{
-        width: 300px;
+    .tutorial > video{
+        width: 500px;
     }
     
     
@@ -375,6 +418,11 @@ footer{
     }
     
 }
+@media (max-width: 600px) {
+    .tutorial > video{
+        width: 350px;
+    }
+}
 @media (max-width: 418px) {
     
     .half-maze{
@@ -387,11 +435,14 @@ footer{
         width: 100%;
     }
     
-    .container > h1, .guide > h1, .characters > h1, .gameplay > h1, .features > h1{
+    .guide > h1, .characters > h1, .tutorial > h1, .features > h1{
+        font-size: 40px;
+    }
+    .container > h1 {
         font-size: 50px;
     }
     
-    .container > p, .guide > p, .characters > p, .gameplay > p, .features > p{
+    .container > p, .guide > p, .characters > p, .tutorial > p, .features > p{
         font-size: 15px;
     }
     .players > img{
@@ -399,5 +450,8 @@ footer{
     }
     .characters{
         height: 140vh;
+    }
+    .tutorial > video{
+        width: 300px;
     }
 }
